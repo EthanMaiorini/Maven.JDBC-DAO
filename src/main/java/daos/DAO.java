@@ -11,6 +11,6 @@ public interface DAO {
     public List<Car> findAll() throws SQLException;
     public Car update(Car dto);
     public Car create(Car dto);
-    public void delete(int id);
+    public boolean delete(int id);
 
 }

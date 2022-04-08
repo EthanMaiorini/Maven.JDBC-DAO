@@ -44,8 +44,19 @@ public class carDAOTest  {
     @Test
     public void testCreate() throws SQLException {
         carDAO carD = new carDAO();
-        Car car = new Car(1, "Nissan", "Maxima",2022, "Blue", "141516");
+        Car car = new Car( 0, "Nissan", "Maxima",2022, "Blue", "141516");
         carD.create(car);
+        List<Car> cars = new ArrayList<>();
+        cars = carD.findAll();
+        for(Car c : cars) {
+            System.out.println(c.toString());
+        }
+    }
+
+    @Test
+    public void testDelete() throws SQLException {
+        carDAO carD = new carDAO();
+        carD.delete(6);
         List<Car> cars = new ArrayList<>();
         cars = carD.findAll();
         for(Car c : cars) {

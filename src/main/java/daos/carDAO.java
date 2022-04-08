@@ -99,7 +99,21 @@ public class carDAO implements DAO{
         return dto;
     }
 
-    public void delete(int id) {
+    public boolean delete(int id) {
+        Connection connection = ConnectionFactory.getConnection();
+        try {
+            Statement stmt = connection.createStatement();
+            int i = stmt.executeUpdate("DELETE FROM car WHERE id=" + id);
+
+            if(i == 1) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
 
     }
 }
